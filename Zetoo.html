@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zetoo Cheats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Schwarz */
+            color: #fff; /* Weiß für Text */
+            overflow: hidden;
+            position: relative;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background-color: #222;
+            overflow: hidden;
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        nav ul li {
+            float: left;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 20px;
+            min-height: 200px;
+        }
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .product {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .product p {
+            margin: 10px 0 5px 0;
+            font-size: 20px;
+            color: #fff;
+        }
+        .product span {
+            font-size: 18px;
+            color: #aaa;
+        }
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .product:hover img {
+            transform: scale(1.1);
+        }
+        .details {
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .details h2 {
+            margin-top: 0;
+            font-size: 28px;
+            color: #4CAF50;
+        }
+        .details p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #ccc;
+        }
+        .buy-section {
+            margin-top: 20px;
+        }
+        .buy-section input, .buy-section select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            margin-bottom: 10px;
+            width: calc(100% - 22px);
+            background-color: #333;
+            color: #fff;
+        }
+        .buy-section button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .buy-section button:hover {
+            background-color: #45a049;
+        }
+        .email-feedback {
+            margin-top: 10px;
+        }
+        .email-feedback span {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        .email-feedback .valid {
+            color: green;
+        }
+        .email-feedback .invalid {
+            color: red;
+        }
+        .confirmation {
+            text-align: center;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .confirmation h2 {
+            color: #4CAF50;
+        }
+        .snowflake {
+            position: absolute;
+            color: #FFF;
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1000;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        @media (max-width: 600px) {
+            nav ul li {
+                float: none;
+                width: 100%;
+            }
+            nav ul li a {
+                padding: 10px;
+            }
+            .product {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Zetoo Cheats</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a onclick="showContent('Home')">Home</a></li>
+            <li><a onclick="showContent('Buy Zetoo')">Buy Zetoo</a></li>
+            <li><a onclick="showContent('Discord')">Discord</a></li>
+        </ul>
+    </nav>
+
+    <main id="content">
+        <!-- Initial Content -->
+    </main>
+
+    <div id="product-details" class="details" style="display:none;">
+        <h2 id="product-title">Produkt Details</h2>
+        <p id="product-description">Hier finden Sie die Details zum ausgewählten Produkt.</p>
+        <div class="buy-section">
+            <select id="product-options">
+                <!-- Options will be populated dynamically -->
+            </select>
+            <input type="email" id="email" placeholder="Ihre E-Mail-Adresse">
+            <button onclick="sendEmail()">Kaufen</button>
+            <div id="email-feedback" class="email-feedback"></div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Zetoo Cheats. Alle Rechte vorbehalten.
+    </footer>
+
+    <div id="snowflakes"></div>
+
+    <script>
+        const products = {
+            'Fortnite Cheat': {
+                options: [
+                    { value: '3.99', text: '1 Day - 7,99€' },
+                    { value: '14.99', text: '1 Week - 49,99€' },
+                    { value: '149.99', text: 'Lifetime - 249,99€' }
+                ]
+            },
+            'Valorant Cheat': {
+                options: [
+                    { value: '5.99', text: '1 Day - 5,99€' },
+                    { value: '19.99', text: '1 Week - 19,99€' },
+                    { value: '199.99', text: 'Lifetime - 199,99€' }
+                ]
+            },
+            'HWID Spoofer': {
+                options: [
+                    { value: '9.99', text: '1 Day - 3,99€' },
+                    { value: '29.99', text: '1 Week - 14,99€' },
+                    { value: '299.99', text: 'Lifetime - 149,99€' }
+                ]
+            }
+        };
+
+        function showContent(page) {
+            const content = document.getElementById('content');
+            if (page === 'Home') {
+                content.innerHTML = `
+                    <h2>Willkommen bei Zetoo Cheats</h2>
+                    <p>Entdecken Sie die besten Cheats für Valorant und Fortnite sowie HWID Spoofer.</p>
+                    <h2>Wie kaufen?</h2>
+                    <p>Gehen Sie zu "Buy Zetoo" oder besuchen Sie unseren Discord-Server, um zu kaufen.</p>
+                `;
+                document.getElementById('product-details').style.display = 'none';
+            } else if (page === 'Buy Zetoo') {
+                content.innerHTML = `
+                    <div class="product" onclick="showProductDetails('Fortnite Cheat')">
+                        <img src="https://th.bing.com/th/id/OIP.0IycUq8NhSeJ9hdyQdmkwwHaEK?rs=1&pid=ImgDetMain" alt="Fortnite Cheat">
+                        <p>Fortnite Cheat</p>
+                        <span>Preis: 19,99€</span>
+                    </div>
+                    <div class="product" onclick="showProductDetails('Valorant Cheat')">
+                        <img src="https://th.bing.com/th/id/OIP.M9IAOePGNHDEUX6nJ9x6NwHaEJ?rs=1&pid=ImgDetMain" alt="Valorant Cheat">
+                        <p>Valorant Cheat</p>
+                        <span>Preis: 29,99€</span>
+                    </div>
+                    <div class="product" onclick="showProductDetails('HWID Spoofer')">
+                        <img src="https://th.bing.com/th/id/OIP.5ENqe-BGZMoAYAxbKuWxNgHaD4?rs=1&pid=ImgDetMain" alt="HWID Spoofer">
+                        <p>HWID Spoofer</p>
+                        <span>Preis: 39,99€</span>
+                    </div>
+                `;
+                document.getElementById('product-details').style.display = 'none';
+            } else if (page === 'Discord') {
+                content.innerHTML = `
+                    <h2>Discord-Server</h2>
+                    <p>Treten Sie unserem Discord-Server bei, um Unterstützung zu erhalten und sich mit anderen Nutzern auszutauschen.</p>
+                    <a href="https://discord.gg/hGhvXs33z5" target="_blank">
+                        <img src="https://th.bing.com/th/id/R.32c6d327568ffba8f0fe563a0471a1d0?rik=YEbiLMkUlcjKWA&pid=ImgRaw&r=0" alt="Tritt unserem Discord bei" style="max-width: 10%; height: auto; border: none;">
+                    </a>
+                `;
+                document.getElementById('product-details').style.display = 'none';
+            }
+        }
+
+        function showProductDetails(product) {
+            const productData = products[product];
+            const optionsHTML = productData.options.map(option => 
+                `<option value="${option.value}">${option.text}</option>`
+            ).join('');
+            
+            document.getElementById('product-title').innerText = product;
+            document.getElementById('product-description').innerText = 'Hier finden Sie die Details zum ausgewählten Produkt.';
+            document.getElementById('product-options').innerHTML = optionsHTML;
+            document.getElementById('product-details').style.display = 'block';
+            document.getElementById('content').innerHTML = '';
+        }
+
+        function sendEmail() {
+            var email = document.getElementById('email').value;
+            var feedback = document.getElementById('email-feedback');
+            var option = document.getElementById('product-options').value;
+            var optionText = document.getElementById('product-options').options[document.getElementById('product-options').selectedIndex].text;
+
+            if (validateEmail(email)) {
+                feedback.innerHTML = '<span class="valid">Vielen Dank! Ihre Anfrage wurde gesendet.</span>';
+                // Leert den Inhalt der Seite und zeigt die Bestätigungsnachricht
+                setTimeout(() => {
+                    document.getElementById('content').innerHTML = `
+                        <div class="confirmation">
+                            <h2>Vielen Dank für Ihren Kauf!</h2>
+                            <p>Sie haben die ${optionText} Version für ${option}€ gekauft. Wir werden uns in Kürze mit Ihnen in Verbindung setzen.</p>
+                            <p>Please Write Me On Discord My User Is: noxy3k__</p>
+                            <p>Send Me A Proof
+                        </div>
+                    `;
+                    document.getElementById('product-details').style.display = 'none';
+                }, 2000);
+            } else {
+                feedback.innerHTML = '<span class="invalid">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>';
+            }
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function createSnowflakes(num) {
+            const container = document.getElementById('snowflakes');
+            for (let i = 0; i < num; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = `${Math.random() * 100}vw`; // Zufällige Positionierung von links
+                snowflake.style.top = `-${Math.random() * 100}vh`; // Beginnt oben außerhalb des Bildschirms
+                snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`; // Zufällige Dauer
+                snowflake.style.opacity = Math.random(); // Zufällige Transparenz
+                snowflake.style.fontSize = `${Math.random() * 1.5 + 0.5}em`; // Zufällige Größe
+                snowflake.style.transform = `translateX(${Math.random() * 20 - 10}vw)`; // Zufällige horizontale Verschiebung
+                container.appendChild(snowflake);
+            }
+        }
+
+        // Initialize snowflakes
+        createSnowflakes(100);
+    </script>
+</body>
+</html>
